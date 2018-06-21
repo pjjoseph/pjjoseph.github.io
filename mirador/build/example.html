@@ -31,27 +31,27 @@
       if (baseurl.match('localhost')) { // use this for dev
         baseurl += '/pjjoseph.github.io'
       }
-      var manifests = []
 
       $.get("https://api.github.com/repos/pjjoseph/pjjoseph.github.io/contents/manifests").then(function(response){
-        console.log(response)
-        manifests = response.map(function(r){
+        var manifests = response.map(function(r){
           return {
             manifestUri: baseurl + '/' + r.path,
             location: "Test Ranges"
           };
         })
-        miradorInit();
+        miradorInit(manifests);
       })
 
-      function miradorInit() {
+      function miradorInit(manifests) {
+        var loadFirst = manifests[Math.floor(Math.random() * manifests.length)].manifestUri;
+        console.log(manifests, loadFirst)
         var myMiradorInstance = Mirador({
           id: "viewer",
           layout: "1x1",
           buildPath: "mirador/",
           data: manifests,
           windowObjects: [{
-            loadedManifest: "https://github.com/pjjoseph/sampleManifests/blob/master/KelmscottManifest.json?raw=true",
+            loadedManifest: loadFirst,
             viewType: "BookView",
             slotAddress: "row1"
           }
