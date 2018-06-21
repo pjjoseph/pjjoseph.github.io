@@ -25124,13 +25124,40 @@
       "label": "The Knytes Tale",
       "viewingHint": "paged",
       "canvases": [
-        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0029"
+        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0029#xywh=2354,495,1541,467"
       ]
     },
     {
       "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-4",
       "@type": "sc:Range",
       "label": "The Milleres Tale",
+      "viewingHint": "paged",
+      "canvases": [
+        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0052"
+      ]
+    },
+    {
+      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-5",
+      "@type": "sc:Range",
+      "label": "The Knytes Tale",
+      "viewingHint": "paged",
+      "canvases": [
+        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0052"
+      ]
+    },
+    {
+      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-6",
+      "@type": "sc:Range",
+      "label": "The Knytes Tale",
+      "viewingHint": "paged",
+      "canvases": [
+        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0052"
+      ]
+    },
+    {
+      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-7",
+      "@type": "sc:Range",
+      "label": "The Knytes Tale",
       "viewingHint": "paged",
       "canvases": [
         "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0052"
