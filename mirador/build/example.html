@@ -18,38 +18,53 @@
     </style>
   </head>
   <body>
-    <h1>My Webpage</h1>
+    <h1>It's a Mirador Webpage</h1>
     <div id="viewerContainer">
       <div id="viewer"></div>
     </div>
-
     <script src="mirador/mirador.min.js"></script>
     <script src="https://rawgit.com/mejackreed/annotot/master/app/assets/javascripts/annotot/annotot_endpoint.js"></script>
     <script type="text/javascript">
+    $(function() {
 
-     $(function() {
-       myMiradorInstance = Mirador({
-         id: "viewer",
-         layout: "1x1",
-         buildPath: "mirador/",
-         data: [
-           { manifestUri: "https://github.com/pjjoseph/sampleManifests/blob/master/KelmscottManifest.json?raw=true", location: "Test Ranges"},
-           { manifestUri: "https://iiif.lib.harvard.edu/manifests/drs:50230073", location: "Test Ranges"},
-         ],
-         windowObjects: [{
-           loadedManifest: "https://github.com/pjjoseph/sampleManifests/blob/master/KelmscottManifest.json?raw=true",
-           viewType: "BookView",
-           slotAddress: "row1"
-         }
-         ],
-         annotationEndpoint: {
-           name: "Annotot",
-           module: "AnnototEndpoint",
-           options: {
-             endpoint: "http://ras.scta.info/annotations"
-           }
-         }
-       });
+      var baseurl = window.location.origin;
+      if (baseurl.match('localhost')) { // use this for dev
+        baseurl += '/pjjoseph.github.io'
+      }
+
+      $.get("https://api.github.com/repos/pjjoseph/pjjoseph.github.io/contents/manifests").then(function(response){
+        var manifests = response.map(function(r){
+          return {
+            manifestUri: baseurl + '/' + r.path,
+            location: "Test Ranges"
+          };
+        })
+        miradorInit(manifests);
+      })
+
+      function miradorInit(manifests) {
+        var loadFirst = manifests[Math.floor(Math.random() * manifests.length)].manifestUri;
+        console.log(manifests, loadFirst)
+        var myMiradorInstance = Mirador({
+          id: "viewer",
+          layout: "1x1",
+          buildPath: "mirador/",
+          data: manifests,
+          windowObjects: [{
+            loadedManifest: loadFirst,
+            viewType: "BookView",
+            slotAddress: "row1"
+          }
+          ],
+          annotationEndpoint: {
+            name: "Annotot",
+            module: "AnnototEndpoint",
+            options: {
+              endpoint: "http://ras.scta.info/annotations"
+            }
+          }
+        });
+      }
      });
     </script>
   </body>
