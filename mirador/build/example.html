@@ -31,7 +31,6 @@
       if (baseurl.match('localhost')) { // use this for dev
         baseurl += '/pjjoseph.github.io'
       }
-      var ghApi = "https://api.github.com"
       var manifests = []
 
       $.get("https://api.github.com/repos/pjjoseph/pjjoseph.github.io/contents/manifests").then(function(response){
