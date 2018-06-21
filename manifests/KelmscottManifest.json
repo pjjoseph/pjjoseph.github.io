@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
-  "@id": "http://127.0.0.1:9000/KelmscottManifest.json",
+  "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest.json/",
   "@type": "sc:Manifest",
   "label": "The works of Geoffrey Chaucer, now newly imprinted",
   "description": "Title page and 1st text page within decorative borders; ornamental initials and marginal decorations; sidenotes in red.<br><br>Text in double columns; printed in Chaucer type; with the headings to the longer poems in Troy type; the whole was printed on Batchelor handmade paper watermarked with a fish and a fish.",
@@ -25092,7 +25092,7 @@
   ],
   "structures": [
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-0",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-0",
       "@type": "sc:Range",
       "label": "Cover",
       "viewingHint": "paged",
@@ -25101,7 +25101,7 @@
       ]
     },
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-1",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-1",
       "@type": "sc:Range",
       "label": "Table of Contents",
       "viewingHint": "paged",
@@ -25110,7 +25110,7 @@
       ]
     },
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-2",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-2",
       "@type": "sc:Range",
       "label": "The Prologue",
       "viewingHint": "paged",
@@ -25119,16 +25119,16 @@
       ]
     },
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-3",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-3",
       "@type": "sc:Range",
       "label": "The Knytes Tale",
       "viewingHint": "paged",
       "canvases": [
-        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0029"
+        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0029#xywh=2354,495,1541,467"
       ]
     },
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-4",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-4",
       "@type": "sc:Range",
       "label": "The Milleres Tale",
       "viewingHint": "paged",
@@ -25137,7 +25137,16 @@
       ]
     },
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-5",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-5",
+      "@type": "sc:Range",
+      "label": "The Knytes Tale",
+      "viewingHint": "paged",
+      "canvases": [
+        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0062"
+      ]
+    },
+    {
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-6",
       "@type": "sc:Range",
       "label": "The Knytes Tale",
       "viewingHint": "paged",
@@ -25146,16 +25155,7 @@
       ]
     },
     {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-6",
-      "@type": "sc:Range",
-      "label": "The Knytes Tale",
-      "viewingHint": "paged",
-      "canvases": [
-        "https://iiif.library.ubc.ca/presentation/cdm.specialp.1-0366915/canvas/p0052"
-      ]
-    },
-    {
-      "@id": "http://127.0.0.1:9000/KelmscottManifest/range/r-7",
+      "@id": "https://pjjoseph.github.io/blob/master/manifests/KelmscottManifest/range/r-7",
       "@type": "sc:Range",
       "label": "The Knytes Tale",
       "viewingHint": "paged",
