@@ -27,13 +27,15 @@
     <script src="https://rawgit.com/mejackreed/annotot/master/app/assets/javascripts/annotot/annotot_endpoint.js"></script>
     <script type="text/javascript">
 
+      var baseurl = window.location.origin;
+
      $(function() {
        myMiradorInstance = Mirador({
          id: "viewer",
          layout: "1x1",
          buildPath: "mirador/",
          data: [
-           { manifestUri: "https://github.com/pjjoseph/sampleManifests/blob/master/KelmscottManifest.json?raw=true", location: "Test Ranges"},
+           { manifestUri: baseurl + "manifests/KelmscottManifest.json", location: "Test Ranges"},
            { manifestUri: "https://iiif.lib.harvard.edu/manifests/drs:50230073", location: "Test Ranges"},
          ],
          windowObjects: [{
