@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" type="text/css" href="mirador/css/mirador-combined.css">
+    <title>Kelmscott Chaucer</title>
+    <style type="text/css">
+     #viewer {
+       width: 1200px;
+       height: 600px;
+       position: absolute;
+     }
+     #viewerContainer {
+       width: 1400px;
+       margin: 0 auto;
+     }
+    </style>
+  </head>
+  <body>
+    <h1>My Webpage</h1>
+    <div id="viewerContainer">
+      <div id="viewer"></div>
+    </div>
+
+    <script src="mirador/mirador.min.js"></script>
+    <script src="https://rawgit.com/mejackreed/annotot/master/app/assets/javascripts/annotot/annotot_endpoint.js"></script>
+    <script type="text/javascript">
+
+     $(function() {
+       myMiradorInstance = Mirador({
+         id: "viewer",
+         layout: "1x1",
+         buildPath: "mirador/",
+         data: [
+           { manifestUri: "http://127.0.0.1:9000/KelmscottManifest.json", location: "Test Ranges"},
+         ],
+         windowObjects: [{
+           loadedManifest: "http://127.0.0.1:9000/KelmscottManifest.json",
+           viewType: "BookView",
+           slotAddress: "row1"
+         }
+         ],
+         annotationEndpoint: {
+           name: "Annotot",
+           module: "AnnototEndpoint",
+           options: {
+             endpoint: "http://ras.scta.info/annotations"
+           }
+         }
+       });
+     });
+    </script>
+  </body>
+</html>
