@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-    <h1>My Webpage</h1>
+    <h1>It's a Mirador Webpage</h1>
     <div id="viewerContainer">
       <div id="viewer"></div>
     </div>
@@ -32,7 +32,6 @@
         baseurl += '/pjjoseph.github.io'
       }
       var manifests = []
-
       $.get("https://api.github.com/repos/pjjoseph/pjjoseph.github.io/contents/manifests").then(function(response){
         console.log(response)
         manifests = response.map(function(r){
