@@ -26,32 +26,46 @@
     <script src="mirador/mirador.min.js"></script>
     <script src="https://rawgit.com/mejackreed/annotot/master/app/assets/javascripts/annotot/annotot_endpoint.js"></script>
     <script type="text/javascript">
-
+    $(function() {
       var baseurl = window.location.origin;
+      if (baseurl.match('localhost')) { // use this for dev
+        baseurl += '/pjjoseph.github.io'
+      }
+      var ghApi = "https://api.github.com"
+      var manifests = []
 
-     $(function() {
-       myMiradorInstance = Mirador({
-         id: "viewer",
-         layout: "1x1",
-         buildPath: "mirador/",
-         data: [
-           { manifestUri: baseurl + "manifests/KelmscottManifest.json", location: "Test Ranges"},
-           { manifestUri: "https://iiif.lib.harvard.edu/manifests/drs:50230073", location: "Test Ranges"},
-         ],
-         windowObjects: [{
-           loadedManifest: "https://github.com/pjjoseph/sampleManifests/blob/master/KelmscottManifest.json?raw=true",
-           viewType: "BookView",
-           slotAddress: "row1"
-         }
-         ],
-         annotationEndpoint: {
-           name: "Annotot",
-           module: "AnnototEndpoint",
-           options: {
-             endpoint: "http://ras.scta.info/annotations"
-           }
-         }
-       });
+      $.get("https://api.github.com/repos/pjjoseph/pjjoseph.github.io/contents/manifests").then(function(response){
+        console.log(response)
+        manifests = response.map(function(r){
+          return {
+            manifestUri: baseurl + '/' + r.path,
+            location: "Test Ranges"
+          };
+        })
+        miradorInit();
+      })
+
+      function miradorInit() {
+        var myMiradorInstance = Mirador({
+          id: "viewer",
+          layout: "1x1",
+          buildPath: "mirador/",
+          data: manifests,
+          windowObjects: [{
+            loadedManifest: "https://github.com/pjjoseph/sampleManifests/blob/master/KelmscottManifest.json?raw=true",
+            viewType: "BookView",
+            slotAddress: "row1"
+          }
+          ],
+          annotationEndpoint: {
+            name: "Annotot",
+            module: "AnnototEndpoint",
+            options: {
+              endpoint: "http://ras.scta.info/annotations"
+            }
+          }
+        });
+      }
      });
     </script>
   </body>
