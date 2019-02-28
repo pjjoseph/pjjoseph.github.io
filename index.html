@@ -1,5 +1,71 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" type="text/css" href="mirador/css/mirador-combined.css">
+    <title>Kelmscott Chaucer</title>
+    <style type="text/css">
+     #viewer {
+       width: 1200px;
+       height: 600px;
+       position: absolute;
+     }
+     #viewerContainer {
+       width: 1400px;
+       margin: 0 auto;
+     }
+    </style>
+  </head>
   <body>
-<a href="mirador/build/example.html"> example </a>
+    <h1>It's a Mirador Webpage</h1>
+    <div id="viewerContainer">
+      <div id="viewer"></div>
+    </div>
+    <script src="mirador/mirador.min.js"></script>
+    <script src="https://rawgit.com/mejackreed/annotot/master/app/assets/javascripts/annotot/annotot_endpoint.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+      var baseurl = window.location.origin;
+      if (baseurl.match('localhost')) { // use this for dev
+        baseurl += '/pjjoseph.github.io'
+      }
+
+      $.get("https://api.github.com/repos/pjjoseph/pjjoseph.github.io/contents/manifests").then(function(response){
+        var manifests = response.map(function(r){
+          return {
+            manifestUri: baseurl + '/' + r.path,
+            location: "Test Ranges"
+          };
+        })
+        miradorInit(manifests);
+      })
+
+      function miradorInit(manifests) {
+        var loadFirst = manifests[Math.floor(Math.random() * manifests.length)].manifestUri;
+        console.log(manifests, loadFirst)
+        var myMiradorInstance = Mirador({
+          id: "viewer",
+          layout: "1x1",
+          buildPath: "mirador/",
+          data: manifests,
+          windowObjects: [{
+            loadedManifest: loadFirst,
+            viewType: "BookView",
+            slotAddress: "row1"
+          }
+          ],
+          annotationEndpoint: {
+            name: "Annotot",
+            module: "AnnototEndpoint",
+            options: {
+              endpoint: "http://ras.scta.info/annotations"
+            }
+          }
+        });
+      }
+     });
+    </script>
   </body>
 </html>
